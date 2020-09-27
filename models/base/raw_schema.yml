@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: customers
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCDS_SF100TCL
+    loaded_at_field: _loaded_at
+    tables:
+      - name: CUSTOMER
+      - name: CUSTOMER_DEMOGRAPHICS
+      - name: CATALOG_SALES
+      - name: STORE_SALES
+      - name: STORE_RETURNS
+      - name: STORE
+      - name: HOUSEHOLD_DEMOGRAPHICS
+      - name: INCOME_BAND
+  - name: website
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCDS_SF100TCL
+    loaded_at_field: _loaded_at
+    tables:
+      - name: WEB_PAGE
+      - name: WEB_RETURNS
+      - name: WEB_SALES
+  - name: misc
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCDS_SF100TCL
+    loaded_at_field: _loaded_at
+    tables:
+      - name: DATE_DIM
+      - name: TIME_DIM
