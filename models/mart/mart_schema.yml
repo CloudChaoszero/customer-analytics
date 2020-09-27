@@ -1,0 +1,87 @@
+version: 2
+
+models:
+
+  - name: household_demographics_dim
+    columns:
+      - name: hd_demo_sk
+        description: "Blah"
+      - name: hd_income_band_sk
+        description: "Blah"
+      - name: hd_buy_potential
+        description: "Blah"
+      - name: hd_dep_count
+        description: "Blah"
+      - name: hd_dep_count
+        description: "Blah"
+      - name: hd_vehicle_count
+        description: "Blah"
+      - name: income_band_bound
+        description: "Blah"
+  - name: customers_dim
+    meta:
+      contains_pii: true
+  - name: catalog_sales_fct
+    columns:
+      - name: customer_sales_sold_date
+        description: "Sold Date"
+      - name: customer_sales_sold_time_am_pm
+        description: "Sold Time. Values (AM-PM)"
+      - name: customer_sales_sold_time_sub_shift
+        description: "Sold Time. Values (Night/Day)"
+      - name: customer_sales_ship_date
+        description: "Shipment Date"
+      - name: income_band_bound
+        description: "Customer's Income Band"
+      - name: household_buy_potential
+        description: "Customer's Buying potential"
+      - name: item_sk
+        description: "Item ID"
+      - name: order_number
+        description: "Order Number"
+      - name: quantity
+        description: "Quanity Amount"
+      - name: wholesale_cost
+        description: "Wholesale Cost"
+      - name: list_price
+        description: "List Price"
+      - name: sales_price
+        description: "Sales Price"
+      - name: ext_discount_amount
+        description: "Ext. Discount Amount"
+      - name: ext_sales_price
+        description: "Ext. Sales Price"
+      - name: ext_wholesale_cost
+        description: "Ext. Wholesale Cost"
+      - name: ext_list_price
+        description: "Ext. List Price"
+      - name: ext_tax
+        description: "Ext. Tax"
+      - name: coupon_amount
+        description: "Coupon Amount"
+      - name: ext_ship_cost
+        description: "Ext. Ship Cost"
+      - name: net_paid
+        description: "Net Paid"
+      - name: net_paid_income_tax
+        description: "Net Paid Income Tax"
+      - name: net_paid_income_ship
+        description: "Net Paid Income Ship."
+      - name: net_paid_income_ship_tax
+        description: "Net Paid Income Ship. Tax"
+      - name: net_amount
+        description: "Net Amount"
+  - name: catalog_sales_monthly_fct
+    columns:
+      - name: customer_sales_sold_date_month
+        description: "Sold Month (date) of Customer's purchases"
+        tests:
+        - unique
+      - name: income_band_bound
+        description: "Income Band Interval"
+      - name: total_quantity
+        description: "Total Quantity, by Month & Income Band"
+      - name: total_wholesale_cost
+        description: "Total Wholesale Cost, by Month & Income Band"
+      - name: total_sales_price
+        description: "Total Sales Price, by Month & Income Band"
