@@ -1,8 +1,9 @@
 version: 2
 
 models:
-
+    
   - name: household_demographics_dim
+    description: '{{ doc("household_demographics_dim") }}'
     columns:
       - name: hd_demo_sk
         description: "Blah"
@@ -22,6 +23,7 @@ models:
     meta:
       contains_pii: true
   - name: catalog_sales_fct
+    description: '{{ doc("catalog_sales_fct") }}'
     columns:
       - name: customer_sales_sold_date
         description: "Sold Date"
@@ -71,14 +73,36 @@ models:
         description: "Net Paid Income Ship. Tax"
       - name: net_amount
         description: "Net Amount"
+      - name: net_amount
+        description: "Total Net Amount, converted into British Pounds (Oct 2020)"
+      - name: net_amount_per_order_unit_british_pounds
+        description: "Total Net Amount / Order Quantity, where Net Amount is the converted into British Pounds (Oct 2020)"
   - name: catalog_sales_monthly_fct
+    description: '{{ doc("catalog_sales_monthly_fct") }}'
     columns:
       - name: customer_sales_sold_date_month
         description: "Sold Month (date) of Customer's purchases"
         tests:
-        - unique
+        - not_null
       - name: income_band_bound
         description: "Income Band Interval"
+      - name: total_quantity
+        description: "Total Quantity, by Month & Income Band"
+      - name: total_wholesale_cost
+        description: "Total Wholesale Cost, by Month & Income Band"
+      - name: total_sales_price
+        description: "Total Sales Price, by Month & Income Band"
+  - name: catalog_sales_by_subshift_monthly_fct
+    description: '{{ doc("catalog_sales_by_subshift_monthly_fct") }}'
+    columns:
+      - name: customer_sales_sold_date_month
+        description: "Sold Month (date) of Customer's purchases"
+        tests:
+        - not_null
+      - name: income_band_bound
+        description: "Income Band Interval"
+      - name: customer_sales_sold_time_sub_shift
+        description: "Sold Time. Values (Night/Day)"
       - name: total_quantity
         description: "Total Quantity, by Month & Income Band"
       - name: total_wholesale_cost
